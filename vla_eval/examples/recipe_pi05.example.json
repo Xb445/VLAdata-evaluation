@@ -1,0 +1,18 @@
+{
+  "repo_id": "local/piper_parcel",
+  "pretrained_path": "/absolute/path/to/local/pi05_base",
+  "steps": 1000,
+  "batch_size": 4,
+  "seeds": [
+    11,
+    23
+  ],
+  "selection_seed": 42,
+  "train_args": {
+    "policy.device": "cuda",
+    "policy.gradient_checkpointing": true,
+    "policy.train_expert_only": true,
+    "num_workers": 4,
+    "log_freq": 20
+  }
+}

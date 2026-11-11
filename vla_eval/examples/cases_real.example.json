@@ -1,0 +1,24 @@
+{
+  "split": "test",
+  "environment": "real",
+  "execution_protocol": "Piper. Independent object placement resets. Record robot and processor versions, 30 Hz commands, max 20 s per case.",
+  "success_criteria": "The designated parcel is fully inside the tray and stays there for 2 seconds after release without intervention.",
+  "cases": [
+    {
+      "case_id": "parcel-1",
+      "task_id": "parcel_to_tray",
+      "cluster_id": "layout-1",
+      "scenario_id": "parcel-layout-v1-1",
+      "source_group": "heldout-layout-1",
+      "seed": 101
+    },
+    {
+      "case_id": "parcel-2",
+      "task_id": "parcel_to_tray",
+      "cluster_id": "layout-2",
+      "scenario_id": "parcel-layout-v1-2",
+      "source_group": "heldout-layout-2",
+      "seed": 102
+    }
+  ]
+}

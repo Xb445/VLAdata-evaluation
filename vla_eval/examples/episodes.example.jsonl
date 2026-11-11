@@ -1,0 +1,3 @@
+{"episode_index": 0, "split": "train", "source_group": "capture-session-0", "task_id": "parcel_to_tray", "coverage_cell": "parcel_to_tray/center", "action_verified": true, "language_verified": true}
+{"episode_index": 1, "split": "dev", "source_group": "capture-session-1", "task_id": "parcel_to_tray", "coverage_cell": "parcel_to_tray/center", "action_verified": true, "language_verified": true}
+{"episode_index": 2, "split": "test", "source_group": "capture-session-2", "task_id": "parcel_to_tray", "coverage_cell": "parcel_to_tray/center", "action_verified": true, "language_verified": true}

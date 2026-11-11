@@ -1,0 +1,2 @@
+{"case_id":"parcel-1","scenario_id":"parcel-layout-v1-1","case_seed":101,"attempt":1,"outcome":"success","outcome_verified":true,"checkpoint_sha":"COPY_FROM_RUN_JSON","evidence":"path/to/video-or-review-record"}
+{"case_id":"parcel-2","scenario_id":"parcel-layout-v1-2","case_seed":102,"attempt":1,"outcome":"timeout","outcome_verified":true,"checkpoint_sha":"COPY_FROM_RUN_JSON","evidence":"path/to/video-or-review-record"}
