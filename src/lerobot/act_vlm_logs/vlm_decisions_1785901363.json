@@ -1,0 +1,452 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1785901141.354953,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785901141.5623689,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785901141.7703457,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785901141.9761372,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785901142.180916,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 92,
+    "timestamp": 1785901145.6350179,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 92,
+    "timestamp": 1785901145.848157,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 92,
+    "timestamp": 1785901146.0602999,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 92,
+    "timestamp": 1785901146.2786312,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 92,
+    "timestamp": 1785901146.4845512,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 184,
+    "timestamp": 1785901149.7716541,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 184,
+    "timestamp": 1785901149.9899378,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 184,
+    "timestamp": 1785901150.1959286,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 184,
+    "timestamp": 1785901150.4100778,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 184,
+    "timestamp": 1785901150.6143801,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 276,
+    "timestamp": 1785901153.906357,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 276,
+    "timestamp": 1785901154.1107635,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 276,
+    "timestamp": 1785901154.329882,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 276,
+    "timestamp": 1785901154.5360045,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 276,
+    "timestamp": 1785901154.7421153,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 1621,
+    "timestamp": 1785901199.8236058,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1621,
+    "timestamp": 1785901200.038733,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1621,
+    "timestamp": 1785901200.2534263,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1621,
+    "timestamp": 1785901200.4693458,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1621,
+    "timestamp": 1785901200.6921937,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901223.506333,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": false,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901223.7089746,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": false,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901223.9157617,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": false,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901224.1172643,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": false,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901224.3246307,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": false,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901232.6815295,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901232.8990145,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901233.1138334,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901233.3200738,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 2296,
+    "timestamp": 1785901233.5216138,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 3263,
+    "timestamp": 1785901266.0987017,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 3263,
+    "timestamp": 1785901266.325373,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 3263,
+    "timestamp": 1785901266.5376189,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 3263,
+    "timestamp": 1785901266.7613084,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 3263,
+    "timestamp": 1785901266.9768095,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 3891,
+    "timestamp": 1785901288.2391863,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 3891,
+    "timestamp": 1785901288.445693,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 3891,
+    "timestamp": 1785901288.6577,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 3891,
+    "timestamp": 1785901288.871507,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 3891,
+    "timestamp": 1785901289.077527,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 5122,
+    "timestamp": 1785901330.4356267,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 5122,
+    "timestamp": 1785901330.656188,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 5122,
+    "timestamp": 1785901330.8683178,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 5122,
+    "timestamp": 1785901331.0779927,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 5122,
+    "timestamp": 1785901331.297466,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  }
+]

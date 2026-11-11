@@ -1,0 +1,47 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1786000074.9913096,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1786000075.186205,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1786000075.3821568,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1786000075.5905664,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1786000075.7837448,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  }
+]

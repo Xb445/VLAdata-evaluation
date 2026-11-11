@@ -1,0 +1,182 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1788158660.3229256,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1788158660.5509982,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1788158660.7810771,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1788158661.0024405,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1788158661.2261515,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 514,
+    "timestamp": 1788158678.7728825,
+    "subtask": "subtask2",
+    "parcel_location": "托盘",
+    "label_visible": false,
+    "target_model": "Task_B",
+    "success": true
+  },
+  {
+    "step": 514,
+    "timestamp": 1788158679.002956,
+    "subtask": "subtask2",
+    "parcel_location": "托盘",
+    "label_visible": false,
+    "target_model": "Task_B",
+    "success": true
+  },
+  {
+    "step": 514,
+    "timestamp": 1788158679.2316236,
+    "subtask": "subtask2",
+    "parcel_location": "托盘",
+    "label_visible": false,
+    "target_model": "Task_B",
+    "success": true
+  },
+  {
+    "step": 514,
+    "timestamp": 1788158679.457117,
+    "subtask": "subtask2",
+    "parcel_location": "托盘",
+    "label_visible": false,
+    "target_model": "Task_B",
+    "success": true
+  },
+  {
+    "step": 514,
+    "timestamp": 1788158679.6855216,
+    "subtask": "subtask2",
+    "parcel_location": "托盘",
+    "label_visible": false,
+    "target_model": "Task_B",
+    "success": true
+  },
+  {
+    "step": 1577,
+    "timestamp": 1788158715.4641376,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1577,
+    "timestamp": 1788158715.7076874,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1577,
+    "timestamp": 1788158715.9392152,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1577,
+    "timestamp": 1788158716.170631,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 1577,
+    "timestamp": 1788158716.4005928,
+    "subtask": "subtask3",
+    "parcel_location": "托盘",
+    "label_visible": true,
+    "target_model": "Task_C",
+    "success": true
+  },
+  {
+    "step": 2115,
+    "timestamp": 1788158734.6796858,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": true,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2115,
+    "timestamp": 1788158734.9066775,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": true,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2115,
+    "timestamp": 1788158735.1324778,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": true,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2115,
+    "timestamp": 1788158735.354557,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": true,
+    "target_model": "standby",
+    "success": true
+  },
+  {
+    "step": 2115,
+    "timestamp": 1788158735.581451,
+    "subtask": "subtask4",
+    "parcel_location": "盒子",
+    "label_visible": true,
+    "target_model": "standby",
+    "success": true
+  }
+]

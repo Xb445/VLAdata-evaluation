@@ -1,0 +1,48 @@
+[Main] 运行日志已保存: /home/ub/Videos/Evo-RL/src/lerobot/smolvla_logs/smolvla_20260811_174746.log
+
+[Main] 共 3 个阶段任务:
+       [1] Grab the package and place it on the barcode scanning table.
+       [2] Flip the package if the barcode is not facing up.
+       [3] Grab the scanned package and place it into the box.
+
+============================================================
+  加载 SmolVLA 模型
+============================================================
+[SmolVLA] 加载模型: /home/ub/Videos/models/smolVLa_5W_bs64/pretrained_model
+[SmolVLA] VLM backbone: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+Loading  HuggingFaceTB/SmolVLM2-500M-Video-Instruct weights ...
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+[SmolVLA] 模型已加载 (device=cuda, dtype=torch.float32)
+[SmolVLA] 已从 checkpoint 提取归一化统计量 (state mean=[ 0.30652595  1.3036572  -1.2768525 ]...)
+[SmolVLA] Tokenizer 已加载: HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+[SmolVLA] 推理器就绪 ✓
+  chunk_size=50  n_action_steps=50  action_dim=7
+[Main] ✅ 已启用 RTC 式 chunk 平滑 (horizon=15, blend=10, alpha=0.3)
+[Camera] 已连接: top=/dev/video10, wrist=/dev/video4
+[can1] CAN interface is UP (can_state=ERROR-ACTIVE).
+[Piper] 已连接: can1
+
+============================================================
+  开始推理 (mode=RTC, smoothing=exponential, dry_run=True)
+  键盘: 1..3 切换任务 | t 显示任务 | q 退出 | Ctrl+C 退出
+============================================================
+[   5][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.011 -0.037  0.031  0.066  0.422  0.01   0.004] | 单帧耗时 1ms
+[  10][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.    -0.014  0.018  0.061  0.416  0.014  0.004] | 单帧耗时 2ms
+[  15][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[ 0.001 -0.001  0.023  0.067  0.402  0.011  0.004] | 单帧耗时 6ms
+[  20][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[ 0.    -0.006  0.03   0.068  0.397  0.02   0.004] | 单帧耗时 5ms
+[  25][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[ 0.003 -0.001  0.027  0.072  0.407  0.026  0.004] | 单帧耗时 2ms
+[  30][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[0.001 0.004 0.01  0.068 0.432 0.012 0.004] | 单帧耗时 2ms
+[  35][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[0.005 0.014 0.008 0.072 0.432 0.006 0.004] | 单帧耗时 2ms
+[  40][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.004  0.011  0.012  0.08   0.435  0.006  0.004] | 单帧耗时 4ms
+[  45][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.01   0.005  0.012  0.083  0.44   0.007  0.004] | 单帧耗时 2ms
+[  50][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.018  0.001  0.014  0.079  0.45   0.005  0.004] | 单帧耗时 3ms
+[  55][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.022 -0.005  0.022  0.079  0.45   0.004  0.004] | 单帧耗时 1ms
+[  60][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.026  0.003  0.017  0.081  0.449  0.006  0.004] | 单帧耗时 2ms
+[  65][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.027  0.008  0.016  0.079  0.453  0.009  0.004] | 单帧耗时 2ms
+[  70][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.027  0.014  0.013  0.078  0.448  0.013  0.004] | 单帧耗时 1ms
+[  75][T1] state=[-0.028 -0.033  0.03   0.048  0.422  0.     0.004] action=[-0.022  0.043 -0.021  0.091  0.458  0.011  0.004] | 单帧耗时 1ms
+
+[Main] 收到终止信号，正在安全退出 ...
+[Piper] 已失能并断开
+[Main] 已退出

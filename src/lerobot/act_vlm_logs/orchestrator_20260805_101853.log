@@ -1,0 +1,1192 @@
+2026-08-05 10:18:53 [INFO   ] __main__: 日志文件: ./act_vlm_logs/orchestrator_20260805_101853.log
+2026-08-05 10:18:53 [INFO   ] __main__: ======================================================================
+2026-08-05 10:18:53 [INFO   ] __main__:   ACT + VLM 多任务联调编排器 v1.0
+2026-08-05 10:18:53 [INFO   ] __main__: ======================================================================
+2026-08-05 10:18:53 [INFO   ] __main__:   VLM 服务:     http://localhost:8000/v1
+2026-08-05 10:18:53 [INFO   ] __main__:   VLM 模型:     qwen3-vl-2b
+2026-08-05 10:18:53 [INFO   ] __main__:   Task_A:       /home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model
+2026-08-05 10:18:53 [INFO   ] __main__:   Task_B:       /home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model
+2026-08-05 10:18:53 [INFO   ] __main__:   Task_C:       /home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model
+2026-08-05 10:18:53 [INFO   ] __main__:   默认模型:     Task_A
+2026-08-05 10:18:53 [INFO   ] __main__:   推理设备:     cuda
+2026-08-05 10:18:53 [INFO   ] __main__:   投票窗口:     5 帧 / 阈值 3
+2026-08-05 10:18:53 [INFO   ] __main__:   静止检测:     3.0s @ 0.01745 rad
+2026-08-05 10:18:53 [INFO   ] __main__:   VLM 连拍:     5 帧 × 0.1s 间隔
+2026-08-05 10:18:53 [INFO   ] __main__:   推理频率:     30.0 Hz
+2026-08-05 10:18:53 [INFO   ] __main__:   轨迹平滑:     启用
+2026-08-05 10:18:53 [INFO   ] __main__:   干跑模式:     ✅ 启用 (不发送动作到机械臂)
+2026-08-05 10:18:53 [INFO   ] __main__:   子任务超时:   60.0s
+2026-08-05 10:18:53 [INFO   ] __main__:   切换保护:     5.0s
+2026-08-05 10:18:53 [INFO   ] __main__:   日志目录:     ./act_vlm_logs
+2026-08-05 10:18:53 [INFO   ] __main__: ======================================================================
+2026-08-05 10:18:53 [DEBUG  ] urllib3.connectionpool: Starting new HTTP connection (1): localhost:8000
+2026-08-05 10:18:53 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "GET /v1/models HTTP/1.1" 200 505
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] vLLM 服务连接成功, 可用模型: ['qwen3-vl-2b']
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   ACT + VLM 多任务联调编排器 — 初始化
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 连接相机: top=10, wrist=4
+2026-08-05 10:18:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] ✅ 相机连接成功 (640x480@30fps)
+2026-08-05 10:18:54 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 异步读取线程已启动
+2026-08-05 10:18:56 [DEBUG  ] datasets: PyTorch version 2.7.1 available.
+2026-08-05 10:18:56 [DEBUG  ] root: Detected transformers version: 4.53.3
+2026-08-05 10:18:56 [DEBUG  ] root: Detected peft version: 0.19.1
+2026-08-05 10:18:56 [DEBUG  ] root: Detected scipy version: 1.15.3
+2026-08-05 10:18:56 [DEBUG  ] root: Detected python-can version: 4.6.1
+2026-08-05 10:18:57 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper connected.
+2026-08-05 10:18:57 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ✅ 机械臂已连接: single_piper
+2026-08-05 10:18:57 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能机械臂...
+2026-08-05 10:18:57 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-05 10:18:58 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: True
+2026-08-05 10:19:01 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ✅ 机械臂使能完成
+2026-08-05 10:19:01 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] 预加载 ACT 模型...
+2026-08-05 10:19:01 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_A ← /home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:01 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:01 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Dict field: dict[str, lerobot.configs.types.PolicyFeature]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Tuple field: tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[bool]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[list[str]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a List field: list[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[pathlib.Path]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Dict field: dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decoding a Union field: typing.Optional[float]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:01 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at chunk_size has a default value of 100
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_action_steps has a default value of 100
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at normalization_mapping has a default value of {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at vision_backbone has a default value of resnet18
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_backbone_weights has a default value of ResNet18_Weights.IMAGENET1K_V1
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at replace_final_stride_with_dilation has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pre_norm has a default value of False
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_model has a default value of 512
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_heads has a default value of 8
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_feedforward has a default value of 3200
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at feedforward_activation has a default value of relu
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_encoder_layers has a default value of 4
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_decoder_layers has a default value of 1
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_vae has a default value of True
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at latent_dim has a default value of 32
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_vae_encoder_layers has a default value of 4
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at temporal_ensemble_coeff has a default value of None
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dropout has a default value of 0.1
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at kl_weight has a default value of 10.0
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr has a default value of 1e-05
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_weight_decay has a default value of 0.0001
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr_backbone has a default value of 1e-05
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '\n\n', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'chunk_size': {'required': False, 'dest': 'chunk_size', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             This should be no greater than the chunk size. For example, if the chunk size size 100, you may
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_action_steps': {'required': False, 'dest': 'n_action_steps', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             a corresponding NormalizationMode (e.g., NormalizationMode.MIN_MAX)
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'normalization_mapping': {'required': False, 'dest': 'normalization_mapping', 'default': {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}, 'help': ' ', 'type': typing.Dict[str, lerobot.configs.types.NormalizationMode]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'vision_backbone': {'required': False, 'dest': 'vision_backbone', 'default': 'resnet18', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             `None` means no pretrained weights.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_backbone_weights': {'required': False, 'dest': 'pretrained_backbone_weights', 'default': 'ResNet18_Weights.IMAGENET1K_V1', 'help': ' ', 'type': typing.Optional[str]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             convolution.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'replace_final_stride_with_dilation': {'required': False, 'dest': 'replace_final_stride_with_dilation', 'default': False, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pre_norm': {'required': False, 'dest': 'pre_norm', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_model': {'required': False, 'dest': 'dim_model', 'default': 512, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_heads': {'required': False, 'dest': 'n_heads', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             layers.
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_feedforward': {'required': False, 'dest': 'dim_feedforward', 'default': 3200, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'feedforward_activation': {'required': False, 'dest': 'feedforward_activation', 'default': 'relu', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_encoder_layers': {'required': False, 'dest': 'n_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_decoder_layers': {'required': False, 'dest': 'n_decoder_layers', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             which is used as the VAE's encoder (not to be confused with the transformer encoder - see
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_vae': {'required': False, 'dest': 'use_vae', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'latent_dim': {'required': False, 'dest': 'latent_dim', 'default': 32, 'help': '\n', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_vae_encoder_layers': {'required': False, 'dest': 'n_vae_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             ensembling. Defaults to None which means temporal ensembling is not used. `n_action_steps` must be
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'temporal_ensemble_coeff': {'required': False, 'dest': 'temporal_ensemble_coeff', 'default': None, 'type': typing.Optional[float]}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dropout': {'required': False, 'dest': 'dropout', 'default': 0.1, 'help': '\n\n', 'type': <class 'float'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'kl_weight': {'required': False, 'dest': 'kl_weight', 'default': 10.0, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr': {'required': False, 'dest': 'optimizer_lr', 'default': 1e-05, 'help': 'Training preset', 'type': <class 'float'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_weight_decay': {'required': False, 'dest': 'optimizer_weight_decay', 'default': 0.0001, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr_backbone': {'required': False, 'dest': 'optimizer_lr_backbone', 'default': 1e-05, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:01 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:01 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:01 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_A 加载完成 (0.7s) chunk_size=50, device=cuda
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_A: ✅
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_B ← /home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at chunk_size has a default value of 100
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_action_steps has a default value of 100
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at normalization_mapping has a default value of {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at vision_backbone has a default value of resnet18
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_backbone_weights has a default value of ResNet18_Weights.IMAGENET1K_V1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at replace_final_stride_with_dilation has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pre_norm has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_model has a default value of 512
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_heads has a default value of 8
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_feedforward has a default value of 3200
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at feedforward_activation has a default value of relu
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_encoder_layers has a default value of 4
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_decoder_layers has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_vae has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at latent_dim has a default value of 32
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_vae_encoder_layers has a default value of 4
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at temporal_ensemble_coeff has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dropout has a default value of 0.1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at kl_weight has a default value of 10.0
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr has a default value of 1e-05
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_weight_decay has a default value of 0.0001
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr_backbone has a default value of 1e-05
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '\n\n', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'chunk_size': {'required': False, 'dest': 'chunk_size', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             This should be no greater than the chunk size. For example, if the chunk size size 100, you may
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_action_steps': {'required': False, 'dest': 'n_action_steps', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             a corresponding NormalizationMode (e.g., NormalizationMode.MIN_MAX)
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'normalization_mapping': {'required': False, 'dest': 'normalization_mapping', 'default': {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}, 'help': ' ', 'type': typing.Dict[str, lerobot.configs.types.NormalizationMode]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'vision_backbone': {'required': False, 'dest': 'vision_backbone', 'default': 'resnet18', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             `None` means no pretrained weights.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_backbone_weights': {'required': False, 'dest': 'pretrained_backbone_weights', 'default': 'ResNet18_Weights.IMAGENET1K_V1', 'help': ' ', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             convolution.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'replace_final_stride_with_dilation': {'required': False, 'dest': 'replace_final_stride_with_dilation', 'default': False, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pre_norm': {'required': False, 'dest': 'pre_norm', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_model': {'required': False, 'dest': 'dim_model', 'default': 512, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_heads': {'required': False, 'dest': 'n_heads', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             layers.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_feedforward': {'required': False, 'dest': 'dim_feedforward', 'default': 3200, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'feedforward_activation': {'required': False, 'dest': 'feedforward_activation', 'default': 'relu', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_encoder_layers': {'required': False, 'dest': 'n_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_decoder_layers': {'required': False, 'dest': 'n_decoder_layers', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             which is used as the VAE's encoder (not to be confused with the transformer encoder - see
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_vae': {'required': False, 'dest': 'use_vae', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'latent_dim': {'required': False, 'dest': 'latent_dim', 'default': 32, 'help': '\n', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_vae_encoder_layers': {'required': False, 'dest': 'n_vae_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             ensembling. Defaults to None which means temporal ensembling is not used. `n_action_steps` must be
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'temporal_ensemble_coeff': {'required': False, 'dest': 'temporal_ensemble_coeff', 'default': None, 'type': typing.Optional[float]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dropout': {'required': False, 'dest': 'dropout', 'default': 0.1, 'help': '\n\n', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'kl_weight': {'required': False, 'dest': 'kl_weight', 'default': 10.0, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr': {'required': False, 'dest': 'optimizer_lr', 'default': 1e-05, 'help': 'Training preset', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_weight_decay': {'required': False, 'dest': 'optimizer_weight_decay', 'default': 0.0001, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr_backbone': {'required': False, 'dest': 'optimizer_lr_backbone', 'default': 1e-05, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_B 加载完成 (0.4s) chunk_size=100, device=cuda
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_B: ✅
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_C ← /home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type None: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: None, Result: , nargs: 0, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_metavar: Metavar for type <class 'str'>: str
+2026-08-05 10:19:02 [DEBUG  ] draccus.help_formatter: action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_obs_steps has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at input_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at output_features has a default value of {}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at device has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_amp has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_peft has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at push_to_hub has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at repo_id has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at private has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at tags has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at license has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_path has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at chunk_size has a default value of 100
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_action_steps has a default value of 100
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at normalization_mapping has a default value of {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at vision_backbone has a default value of resnet18
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pretrained_backbone_weights has a default value of ResNet18_Weights.IMAGENET1K_V1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at replace_final_stride_with_dilation has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at pre_norm has a default value of False
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_model has a default value of 512
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_heads has a default value of 8
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dim_feedforward has a default value of 3200
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at feedforward_activation has a default value of relu
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_encoder_layers has a default value of 4
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_decoder_layers has a default value of 1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at use_vae has a default value of True
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at latent_dim has a default value of 32
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at n_vae_encoder_layers has a default value of 4
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at temporal_ensemble_coeff has a default value of None
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at dropout has a default value of 0.1
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at kl_weight has a default value of 10.0
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr has a default value of 1e-05
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_weight_decay has a default value of 0.0001
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.dataclass_wrapper: wrapped field at optimizer_lr_backbone has a default value of 1e-05
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the input data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '\n\n', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             the output data name, and the value is PolicyFeature, which consists of FeatureType and shape attributes.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'chunk_size': {'required': False, 'dest': 'chunk_size', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             This should be no greater than the chunk size. For example, if the chunk size size 100, you may
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_action_steps': {'required': False, 'dest': 'n_action_steps', 'default': 100, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             a corresponding NormalizationMode (e.g., NormalizationMode.MIN_MAX)
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'normalization_mapping': {'required': False, 'dest': 'normalization_mapping', 'default': {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'ACTION': <NormalizationMode.MEAN_STD: 'MEAN_STD'>}, 'help': ' ', 'type': typing.Dict[str, lerobot.configs.types.NormalizationMode]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'vision_backbone': {'required': False, 'dest': 'vision_backbone', 'default': 'resnet18', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             `None` means no pretrained weights.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pretrained_backbone_weights': {'required': False, 'dest': 'pretrained_backbone_weights', 'default': 'ResNet18_Weights.IMAGENET1K_V1', 'help': ' ', 'type': typing.Optional[str]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             convolution.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'replace_final_stride_with_dilation': {'required': False, 'dest': 'replace_final_stride_with_dilation', 'default': False, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'pre_norm': {'required': False, 'dest': 'pre_norm', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_model': {'required': False, 'dest': 'dim_model', 'default': 512, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_heads': {'required': False, 'dest': 'n_heads', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             layers.
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dim_feedforward': {'required': False, 'dest': 'dim_feedforward', 'default': 3200, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'feedforward_activation': {'required': False, 'dest': 'feedforward_activation', 'default': 'relu', 'help': ' ', 'type': <class 'str'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_encoder_layers': {'required': False, 'dest': 'n_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_decoder_layers': {'required': False, 'dest': 'n_decoder_layers', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             which is used as the VAE's encoder (not to be confused with the transformer encoder - see
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'use_vae': {'required': False, 'dest': 'use_vae', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'latent_dim': {'required': False, 'dest': 'latent_dim', 'default': 32, 'help': '\n', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'n_vae_encoder_layers': {'required': False, 'dest': 'n_vae_encoder_layers', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.docstring: Warning: Unable to parse attribute docstring:             ensembling. Defaults to None which means temporal ensembling is not used. `n_action_steps` must be
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'temporal_ensemble_coeff': {'required': False, 'dest': 'temporal_ensemble_coeff', 'default': None, 'type': typing.Optional[float]}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'dropout': {'required': False, 'dest': 'dropout', 'default': 0.1, 'help': '\n\n', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'kl_weight': {'required': False, 'dest': 'kl_weight', 'default': 10.0, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr': {'required': False, 'dest': 'optimizer_lr', 'default': 1e-05, 'help': 'Training preset', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_weight_decay': {'required': False, 'dest': 'optimizer_weight_decay', 'default': 0.0001, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.wrappers.field_wrapper: Arg options for field 'optimizer_lr_backbone': {'required': False, 'dest': 'optimizer_lr_backbone', 'default': 1e-05, 'help': ' ', 'type': <class 'float'>}
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: 
+POST PROCESSING
+
+2026-08-05 10:19:02 [DEBUG  ] draccus.argparsing: (raw) parsed args: Namespace()
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.policies.act.configuration_act.ACTConfig'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_obs_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = type, type = <enum 'FeatureType'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = shape, type = tuple[int, ...]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = device, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_amp, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_peft, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = push_to_hub, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = repo_id, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = private, type = typing.Optional[bool]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = tags, type = typing.Optional[list[str]]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = license, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = chunk_size, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_action_steps, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = vision_backbone, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = replace_final_stride_with_dilation, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = pre_norm, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_model, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_heads, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dim_feedforward, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = feedforward_activation, type = <class 'str'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_decoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = use_vae, type = <class 'bool'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = latent_dim, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = n_vae_encoder_layers, type = <class 'int'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = temporal_ensemble_coeff, type = typing.Optional[float]
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = dropout, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = kl_weight, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_weight_decay, type = <class 'float'>
+2026-08-05 10:19:02 [DEBUG  ] draccus.parsers.decoding: Decode name = optimizer_lr_backbone, type = <class 'float'>
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_C 加载完成 (0.4s) chunk_size=50, device=cuda
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_C: ✅
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 激活模型: Task_A
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] TrajectorySmoother 已初始化 (S0 策略: EMA=[0.3, 0.12, 0.18, 0.3, 0.3, 0.3, 0.5], rate_limits=[None, 0.015, 0.015, None, None, None, None], gripper_dead_zone=0.5, transition_duration=2.0s)
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] GripperFilter 已初始化
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] SafetyMonitor 已初始化
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   ✅ 初始化完成, 准备开始联调循环
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   默认模型: Task_A
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   投票窗口: 5 帧, 阈值: 3
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   静止检测: 3.0s @ 0.01745 rad
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   子任务超时: 60.0s
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   切换保护:   5.0s
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   VLM 服务: http://localhost:8000/v1
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   模型路径: {'Task_A': '/home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model', 'Task_B': '/home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model', 'Task_C': '/home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model'}
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+======================================================================
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   🚀 ACT + VLM 联调循环开始
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   按 Ctrl+C 停止
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 执行首次场景评估 (VLM 连拍投票确认模型)...
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 10:19:02 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 10:19:02 [DEBUG  ] urllib3.connectionpool: Resetting dropped connection: localhost
+2026-08-05 10:19:03 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 10:19:03 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 10:19:03 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 10:19:03 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 10:19:03 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 10:19:03 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 10:19:03 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:03 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask4, 推导值=subtask1 (基于 location=桌面, label_visible=False), 以推导值为准
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:03 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 10:19:03 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 10:19:04 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 10:19:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 10:19:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.8', '-1.9', '0.6', '25.5', '2.8'], 夹爪cmd: 28676
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.8', '-1.9', '0.6', '25.5', '2.8'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.8', '-1.9', '0.6', '25.5', '2.8'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.8', '-1.9', '0.6', '25.5', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.8', '-1.8', '0.6', '25.6', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.7', '-1.8', '0.6', '25.6', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.7', '-1.8', '0.6', '25.6', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.7', '-1.8', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.7', '-1.8', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.6', '-1.8', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.6', '-1.7', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.6', '-1.7', '0.6', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.5', '-1.7', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.5', '-1.7', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.5', '-1.7', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.4', '-1.6', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.4', '-1.6', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.4', '-1.6', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.5', '0.5', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.4', '0.4', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.4', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.3', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.3', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:04 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:04 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.2', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.2', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.1', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.7', '-1.0', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.6', '-1.0', '0.5', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.6', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.2', '1.5', '-1.1', '0.6', '26.9', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.2', '1.5', '-1.1', '0.6', '26.9', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.2', '1.5', '-1.1', '0.6', '26.9', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.2', '1.5', '-1.1', '0.6', '27.0', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.2', '1.5', '-1.1', '0.6', '27.0', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.7', '-1.3', '0.6', '26.5', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.8', '-1.4', '0.6', '26.2', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.9', '-1.5', '0.6', '26.0', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.0', '-1.5', '0.6', '25.9', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.6', '0.6', '25.8', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:05 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.7', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.7', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.2', '-1.6', '0.5', '25.9', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.2', '-1.6', '0.5', '25.9', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.2', '-1.5', '0.5', '25.9', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.2', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.1', '-1.5', '0.4', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.1', '-1.4', '0.4', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.1', '-1.4', '0.4', '26.0', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.0', '-1.3', '0.4', '26.0', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '2.0', '-1.3', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.8', '1.9', '-1.2', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.2', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.6', '-1.0', '0.5', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.6', '-0.9', '0.5', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.6', '-0.9', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-0.9', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:06 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-0.9', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00000 rad), 触发场景重评估
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 10:19:07 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 10:19:07 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:07 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask4, 推导值=subtask1 (基于 location=桌面, label_visible=False), 以推导值为准
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 10:19:07 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 10:19:07 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 10:19:08 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 10:19:08 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 742
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=False)
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 10:19:08 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.7', '-1.2', '0.6', '26.2', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.8', '-1.3', '0.6', '26.0', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.9', '-1.4', '0.6', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.0', '-1.5', '0.6', '25.8', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.5', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   100 | 推理:  5.1ms | 循环: 10.1ms | 频率:99.5Hz | 模型:Task_A | 切换:0 | VLM:10/10 (100%) | 共识:2 | 静止事件:1
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.6', '25.7', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.7', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.5', '25.9', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.5', '0.5', '25.9', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.4', '0.4', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.4', '0.4', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.3', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.3', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.2', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.2', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.5', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.6', '-1.0', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.4', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.5', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.5', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.6', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.6', '26.6', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.6', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.0', '0.6', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.7', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.8', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.9', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.5', '-1.1', '0.6', '26.9', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.7', '-1.3', '0.6', '26.5', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:09 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.1', '1.8', '-1.4', '0.6', '26.2', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.9', '-1.5', '0.6', '26.0', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.0', '-1.5', '0.6', '25.9', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.1', '-1.6', '0.6', '25.8', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.1', '-1.6', '0.6', '25.8', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '2.2', '-1.6', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.7', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.7', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.7', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.7', '0.6', '25.7', '2.9'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.7', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.7', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.8', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.3', '-1.6', '0.5', '25.9', '3.0'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.6', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.2', '-1.5', '0.5', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.5', '0.4', '26.0', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.4', '0.4', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.1', '-1.4', '0.4', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.3', '0.4', '26.1', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '2.0', '-1.3', '0.4', '26.1', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.9', '-1.2', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.2', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.8', '-1.1', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.1', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['0.9', '1.7', '-1.0', '0.4', '26.2', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.7', '-1.0', '0.4', '26.3', '3.2'], 夹爪cmd: 0
+2026-08-05 10:19:10 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.3', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:11 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.3', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:11 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.3', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:11 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.6', '-1.0', '0.5', '26.4', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:11 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [DryRun] 动作(°): ['1.0', '1.5', '-1.0', '0.5', '26.4', '3.1'], 夹爪cmd: 0
+2026-08-05 10:19:11 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+⚠️  收到信号 2, 紧急停止!
+2026-08-05 10:19:11 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] ⚠️ 紧急停止触发, 退出循环
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+======================================================================
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   正在关闭...
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 异步读取线程已停止
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 相机已断开
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 清理所有模型...
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ 清理完成
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 决策日志已保存: ./act_vlm_logs/vlm_decisions_1785896351.json (10 条)
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+[Final Stats]
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   总步数: 178
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   平均推理时间: 4.3ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   平均循环时间: 7.5ms
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   实际频率: 133.9Hz
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   模型切换次数: 0
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   VLM 调用: {'total_calls': 10, 'success_calls': 10, 'success_rate': 1.0, 'last_call_time': 1785896348.112512}
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   投票共识次数: 2
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   静止事件: 1
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   日志目录: ./act_vlm_logs
+2026-08-05 10:19:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 10:19:11 [INFO   ] __main__: 程序正常退出
+2026-08-05 10:19:11 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper disconnected.

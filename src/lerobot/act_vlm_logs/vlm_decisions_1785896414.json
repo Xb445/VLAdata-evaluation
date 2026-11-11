@@ -1,0 +1,272 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1785896384.4322479,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785896384.641912,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785896384.84829,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785896385.0577502,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 0,
+    "timestamp": 1785896385.2692058,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 197,
+    "timestamp": 1785896392.2069032,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 197,
+    "timestamp": 1785896392.4247062,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 197,
+    "timestamp": 1785896392.6377494,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 197,
+    "timestamp": 1785896392.8429956,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 197,
+    "timestamp": 1785896393.0448194,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 345,
+    "timestamp": 1785896398.2073307,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 345,
+    "timestamp": 1785896398.41215,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 345,
+    "timestamp": 1785896398.6276057,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 345,
+    "timestamp": 1785896398.8312066,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 345,
+    "timestamp": 1785896399.0459,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 437,
+    "timestamp": 1785896402.346003,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 437,
+    "timestamp": 1785896402.5511158,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 437,
+    "timestamp": 1785896402.7603226,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 437,
+    "timestamp": 1785896402.9632144,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 437,
+    "timestamp": 1785896403.1694741,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 529,
+    "timestamp": 1785896406.4787338,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 529,
+    "timestamp": 1785896406.6869056,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 529,
+    "timestamp": 1785896406.8914452,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 529,
+    "timestamp": 1785896407.1034782,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 529,
+    "timestamp": 1785896407.3049994,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 622,
+    "timestamp": 1785896410.6313841,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 622,
+    "timestamp": 1785896410.8382692,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": true,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 622,
+    "timestamp": 1785896411.0430727,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 622,
+    "timestamp": 1785896411.24276,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  },
+  {
+    "step": 622,
+    "timestamp": 1785896411.4610844,
+    "subtask": "subtask1",
+    "parcel_location": "桌面",
+    "label_visible": false,
+    "target_model": "Task_A",
+    "success": true
+  }
+]

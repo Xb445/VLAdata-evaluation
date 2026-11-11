@@ -1,0 +1,529 @@
+2026-08-05 11:44:20 [INFO   ] __main__: 日志文件: ./act_vlm_logs/orchestrator_20260805_114420.log
+2026-08-05 11:44:20 [INFO   ] __main__: ======================================================================
+2026-08-05 11:44:20 [INFO   ] __main__:   ACT + VLM 多任务联调编排器 v1.0
+2026-08-05 11:44:20 [INFO   ] __main__: ======================================================================
+2026-08-05 11:44:20 [INFO   ] __main__:   VLM 服务:     http://localhost:8000/v1
+2026-08-05 11:44:20 [INFO   ] __main__:   VLM 模型:     qwen3-vl-2b
+2026-08-05 11:44:20 [INFO   ] __main__:   Task_A:       /home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model
+2026-08-05 11:44:20 [INFO   ] __main__:   Task_B:       /home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model
+2026-08-05 11:44:20 [INFO   ] __main__:   Task_C:       /home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model
+2026-08-05 11:44:20 [INFO   ] __main__:   默认模型:     Task_A
+2026-08-05 11:44:20 [INFO   ] __main__:   推理设备:     cuda
+2026-08-05 11:44:20 [INFO   ] __main__:   投票窗口:     5 帧 / 阈值 3
+2026-08-05 11:44:20 [INFO   ] __main__:   静止检测:     3.0s @ 0.01745 rad
+2026-08-05 11:44:20 [INFO   ] __main__:   VLM 连拍:     5 帧 × 0.1s 间隔
+2026-08-05 11:44:20 [INFO   ] __main__:   推理频率:     30.0 Hz
+2026-08-05 11:44:20 [INFO   ] __main__:   轨迹平滑:     启用
+2026-08-05 11:44:20 [INFO   ] __main__:   ACT时序集成:  禁用
+2026-08-05 11:44:20 [INFO   ] __main__:   干跑模式:     否 (正常控制机械臂)
+2026-08-05 11:44:20 [INFO   ] __main__:   子任务超时:   60.0s
+2026-08-05 11:44:20 [INFO   ] __main__:   切换保护:     5.0s
+2026-08-05 11:44:20 [INFO   ] __main__:   日志目录:     ./act_vlm_logs
+2026-08-05 11:44:20 [INFO   ] __main__: ======================================================================
+2026-08-05 11:44:20 [DEBUG  ] urllib3.connectionpool: Starting new HTTP connection (1): localhost:8000
+2026-08-05 11:44:20 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "GET /v1/models HTTP/1.1" 200 505
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] vLLM 服务连接成功, 可用模型: ['qwen3-vl-2b']
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   ACT + VLM 多任务联调编排器 — 初始化
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 连接相机: top=10, wrist=4
+2026-08-05 11:44:20 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] ✅ 相机连接成功 (640x480@30fps)
+2026-08-05 11:44:21 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 异步读取线程已启动
+2026-08-05 11:44:22 [DEBUG  ] datasets: PyTorch version 2.7.1 available.
+2026-08-05 11:44:23 [DEBUG  ] root: Detected transformers version: 4.53.3
+2026-08-05 11:44:23 [DEBUG  ] root: Detected peft version: 0.19.1
+2026-08-05 11:44:23 [DEBUG  ] root: Detected scipy version: 1.15.3
+2026-08-05 11:44:23 [DEBUG  ] root: Detected python-can version: 4.6.1
+2026-08-05 11:44:23 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper connected.
+2026-08-05 11:44:23 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ✅ 机械臂已连接: single_piper
+2026-08-05 11:44:23 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能机械臂...
+2026-08-05 11:44:23 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-05 11:44:24 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: True
+2026-08-05 11:44:27 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ✅ 机械臂使能完成
+2026-08-05 11:44:27 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] 预加载 ACT 模型...
+2026-08-05 11:44:27 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_A ← /home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] Task_A 未启用时序集成 (act_temporal_ensemble_coeff=0.0)
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_A 加载完成 (0.7s) chunk_size=50, device=cuda
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_A: ✅
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_B ← /home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] Task_B 未启用时序集成 (act_temporal_ensemble_coeff=0.0)
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_B 加载完成 (0.4s) chunk_size=100, device=cuda
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_B: ✅
+2026-08-05 11:44:28 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 加载 ACT 模型: Task_C ← /home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] Task_C 未启用时序集成 (act_temporal_ensemble_coeff=0.0)
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ Task_C 加载完成 (0.4s) chunk_size=50, device=cuda
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 预加载 Task_C: ✅
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 激活模型: Task_A
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] TrajectorySmoother 已初始化 (S0 策略: EMA=[0.3, 0.12, 0.18, 0.3, 0.3, 0.3, 0.5], rate_limits=[None, 0.015, 0.015, None, None, None, None], gripper_dead_zone=0.5, transition_duration=2.0s)
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] GripperFilter 已初始化
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Init] SafetyMonitor 已初始化
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   ✅ 初始化完成, 准备开始联调循环
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   默认模型: Task_A
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   投票窗口: 5 帧, 阈值: 3
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   静止检测: 3.0s @ 0.01745 rad
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   子任务超时: 60.0s
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   切换保护:   5.0s
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   VLM 服务: http://localhost:8000/v1
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   模型路径: {'Task_A': '/home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model', 'Task_B': '/home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model', 'Task_C': '/home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model'}
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+======================================================================
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   🚀 ACT + VLM 联调循环开始
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   按 Ctrl+C 停止
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 执行首次场景评估 (VLM 连拍投票确认模型)...
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:29 [DEBUG  ] urllib3.connectionpool: Resetting dropped connection: localhost
+2026-08-05 11:44:29 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:29 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:29 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:29 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:29 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:29 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 11:44:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:30 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:30 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:30 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:30 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:30 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.37', '-0.61', '-0.06', '-4.47', '28.50', '11.34'], 夹爪: 0.792
+2026-08-05 11:44:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.4', '-0.6', '-0.1', '-4.5', '28.5', '11.3'], 夹爪: 55459
+2026-08-05 11:44:31 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.522 > 0.500
+2026-08-05 11:44:31 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.8s, 总漂移=0.02075 rad)
+2026-08-05 11:44:31 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02192 rad)
+2026-08-05 11:44:31 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02264 rad)
+2026-08-05 11:44:32 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.03', '-0.20', '0.04', '-4.57', '30.57', '13.13'], 夹爪: -0.006
+2026-08-05 11:44:32 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.4', '1.0', '-1.4', '-4.5', '30.9', '13.1'], 夹爪: 0
+2026-08-05 11:44:33 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   100 | 推理:  5.1ms | 循环:  8.1ms | 频率:22.2Hz | 模型:Task_A | 切换:0 | VLM:5/5 (100%) | 共识:1 | 静止事件:0
+2026-08-05 11:44:33 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.19', '-0.28', '0.10', '-4.51', '30.70', '13.04'], 夹爪: -0.006
+2026-08-05 11:44:33 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.1', '-0.2', '0.1', '-4.6', '30.5', '13.1'], 夹爪: 0
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.32', '-0.28', '0.10', '-4.52', '30.93', '12.93'], 夹爪: -0.006
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.2', '-0.3', '0.1', '-4.5', '30.7', '13.0'], 夹爪: 0
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00651 rad), 触发场景重评估
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:35 [DEBUG  ] urllib3.connectionpool: Resetting dropped connection: localhost
+2026-08-05 11:44:35 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:35 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:35 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:35 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 11:44:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:36 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:36 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:36 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:36 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:36 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:36 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 11:44:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:36 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 11:44:36 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Diagnose] ⚠️ 模型连续 100 步输出接近保持姿态 (最大关节差异 0.28°)。模型=Task_A, subtask=subtask1。可能原因: ①模型本身在当前场景输出保持 (模型质量问题); ②场景/包裹位置与训练分布不匹配。
+2026-08-05 11:44:37 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:44:38 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   200 | 推理:  4.3ms | 循环:  7.4ms | 频率:22.5Hz | 模型:Task_A | 切换:0 | VLM:10/10 (100%) | 共识:2 | 静止事件:1
+2026-08-05 11:44:38 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.28', '-0.28', '0.11', '-4.53', '30.82', '12.88'], 夹爪: -0.006
+2026-08-05 11:44:38 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.3', '-0.3', '0.1', '-4.5', '30.8', '12.9'], 夹爪: 0
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00625 rad), 触发场景重评估
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:39 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:39 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:39 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:39 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 11:44:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:40 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:40 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:40 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:40 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:40 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:40 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:40 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:40 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:40 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.53', '-0.28', '0.10', '-4.53', '31.22', '12.67'], 夹爪: -0.006
+2026-08-05 11:44:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.5', '-0.3', '0.1', '-4.5', '31.2', '12.7'], 夹爪: 0
+2026-08-05 11:44:42 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   300 | 推理:  4.0ms | 循环:  7.1ms | 频率:22.6Hz | 模型:Task_A | 切换:0 | VLM:15/15 (100%) | 共识:3 | 静止事件:2
+2026-08-05 11:44:42 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.63', '-0.29', '0.11', '-4.53', '31.36', '12.55'], 夹爪: -0.007
+2026-08-05 11:44:42 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.6', '-0.3', '0.1', '-4.5', '31.4', '12.6'], 夹爪: 0
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00545 rad), 触发场景重评估
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:43 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:43 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:43 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:43 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 11:44:43 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:44 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:44 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:44 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:44 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:44 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:44 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:44 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:44 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 11:44:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:44 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 11:44:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.77', '-0.29', '0.11', '-4.53', '31.55', '12.43'], 夹爪: -0.007
+2026-08-05 11:44:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.8', '-0.3', '0.1', '-4.5', '31.5', '12.4'], 夹爪: 0
+2026-08-05 11:44:46 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:44:46 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   400 | 推理:  3.8ms | 循环:  6.9ms | 频率:22.6Hz | 模型:Task_A | 切换:0 | VLM:20/20 (100%) | 共识:4 | 静止事件:3
+2026-08-05 11:44:46 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.91', '-0.29', '0.11', '-4.53', '31.70', '12.29'], 夹爪: -0.007
+2026-08-05 11:44:46 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.9', '-0.3', '0.1', '-4.5', '31.7', '12.3'], 夹爪: 0
+2026-08-05 11:44:47 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00623 rad), 触发场景重评估
+2026-08-05 11:44:47 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 11:44:47 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:47 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:47 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:48 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:48 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 1/5
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask1': 1}, 'most_common': ('subtask1', 1)}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:48 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:48 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 2/5
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask1': 2}, 'most_common': ('subtask1', 2)}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:48 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:48 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 3/5
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask1': 3}, 'most_common': ('subtask1', 3)}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:48 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:48 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 4/5
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask1': 4}, 'most_common': ('subtask1', 4)}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:48 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:48 [WARNING] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] ⚠️ subtask 不一致! VLM输出=subtask3, 推导值=subtask1 (基于 location=桌面, label_visible=True), 以推导值为准
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask1, model=Task_A, 窗口: 5/5
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask1': 5}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到托盘 (location=桌面, label_visible=True)
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask1': 5}, 'most_common': ('subtask1', 5)}
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-05 11:44:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 模型未变化 (Task_A), 无需切换
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:48 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_A 内部状态 (清空动作队列)
+2026-08-05 11:44:49 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.03', '-0.28', '0.09', '-4.54', '31.94', '12.17'], 夹爪: -0.007
+2026-08-05 11:44:49 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.0', '-0.3', '0.1', '-4.5', '31.9', '12.2'], 夹爪: 0
+2026-08-05 11:44:51 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   500 | 推理:  3.8ms | 循环:  6.9ms | 频率:22.6Hz | 模型:Task_A | 切换:0 | VLM:25/25 (100%) | 共识:5 | 静止事件:4
+2026-08-05 11:44:51 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.03', '-0.30', '0.09', '-4.56', '31.69', '12.04'], 夹爪: -0.006
+2026-08-05 11:44:51 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.0', '-0.3', '0.1', '-4.6', '31.7', '12.0'], 夹爪: 0
+2026-08-05 11:44:51 [INFO   ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 🔔 机械臂静止 3.0s (保持带=0.0200 rad, 总漂移=0.00394 rad), 触发场景重评估
+2026-08-05 11:44:51 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔔 机械臂静止 3s, 启动 VLM 连拍投票
+2026-08-05 11:44:51 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 投票器已完全重置
+2026-08-05 11:44:51 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-05 11:44:52 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask3, model=Task_C, 窗口: 1/5
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在托盘,标签可见 → Task_C: 放入盒子 (location=托盘, label_visible=True)
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 1, 'max': 5, 'distribution': {'subtask3': 1}, 'most_common': ('subtask3', 1)}
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-05 11:44:52 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask3, model=Task_C, 窗口: 2/5
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在托盘,标签可见 → Task_C: 放入盒子 (location=托盘, label_visible=True)
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 2, 'max': 5, 'distribution': {'subtask3': 2}, 'most_common': ('subtask3', 2)}
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-05 11:44:52 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask3, model=Task_C, 窗口: 3/5
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在托盘,标签可见 → Task_C: 放入盒子 (location=托盘, label_visible=True)
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 3, 'max': 5, 'distribution': {'subtask3': 3}, 'most_common': ('subtask3', 3)}
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-05 11:44:52 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask3, model=Task_C, 窗口: 4/5
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在托盘,标签可见 → Task_C: 放入盒子 (location=托盘, label_visible=True)
+2026-08-05 11:44:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 4, 'max': 5, 'distribution': {'subtask3': 4}, 'most_common': ('subtask3', 4)}
+2026-08-05 11:44:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-05 11:44:53 [DEBUG  ] urllib3.connectionpool: http://localhost:8000 "POST /v1/chat/completions HTTP/1.1" 200 741
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 添加: subtask=subtask3, model=Task_C, 窗口: 5/5
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] ✅ 达成共识! subtask=subtask3 → model=Task_C (5/5 票, 比率=100%)
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 窗口详情: {'subtask3': 5}
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [VLM] 场景分类: 包裹在托盘,标签可见 → Task_C: 放入盒子 (location=托盘, label_visible=True)
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Voter] 窗口: {'size': 5, 'max': 5, 'distribution': {'subtask3': 5}, 'most_common': ('subtask3', 5)}
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.window_voter: [Voter] 共识已消费: ('subtask3', 'Task_C'), 窗口已重置
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask3 → model=Task_C
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🔄 切换模型: Task_A → Task_C
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 🔄 模型切换: Task_A → Task_C
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] CUDA 缓存已清空 (allocated: 608MB, reserved: 666MB)
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 激活模型: Task_C
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 模型从 cuda:0 移动到 cuda
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ 切换完成 (0.1s), 当前模型: Task_C
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🛡️ 切换保护激活: 5s 内禁止模型切换
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Smoother] 已用当前关节状态初始化基线 (joints=['2.0°', '0.0°', '0.0°', '-4.6°', '31.7°', '12.1°'])
+2026-08-05 11:44:53 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Smoother] 过渡平滑已开启 (2.0s)
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] ✅ 模型切换完成: Task_C
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 已重置 Task_C 内部状态 (清空动作队列)
+2026-08-05 11:44:53 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Diagnose] 模型恢复有效动作 (此前保持姿态 465 步)
+2026-08-05 11:44:54 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.78', '-0.11', '-0.39', '-2.99', '31.53', '11.79'], 夹爪: -0.006
+2026-08-05 11:44:54 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.8', '0.1', '-0.2', '-3.0', '31.3', '11.9'], 夹爪: 0
+2026-08-05 11:44:54 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:44:55 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   600 | 推理:  3.7ms | 循环:  6.9ms | 频率:22.6Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:44:55 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.06', '1.21', '-2.79', '-2.72', '33.89', '12.19'], 夹爪: -0.009
+2026-08-05 11:44:55 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.1', '1.2', '-2.3', '-2.7', '33.5', '12.2'], 夹爪: 0
+2026-08-05 11:44:57 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.59', '3.27', '-4.25', '-2.89', '35.33', '13.48'], 夹爪: -0.011
+2026-08-05 11:44:57 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.6', '3.5', '-3.8', '-2.9', '35.1', '13.6'], 夹爪: 0
+2026-08-05 11:44:58 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 🛡️ 切换保护期结束, 静止检测器已重置
+2026-08-05 11:44:59 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.1s, 总漂移=0.02033 rad)
+2026-08-05 11:44:59 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   700 | 推理:  3.7ms | 循环:  6.6ms | 频率:23.4Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:44:59 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['4.66', '9.13', '-8.92', '-3.96', '37.47', '15.97'], 夹爪: -0.016
+2026-08-05 11:44:59 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['5.1', '11.3', '-9.8', '-3.8', '37.5', '16.7'], 夹爪: 0
+2026-08-05 11:45:00 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.77', '2.89', '-4.94', '-2.09', '33.02', '16.33'], 夹爪: -0.012
+2026-08-05 11:45:00 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.9', '4.1', '-4.7', '-1.9', '32.1', '16.7'], 夹爪: 0
+2026-08-05 11:45:01 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:02 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02115 rad)
+2026-08-05 11:45:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   800 | 推理:  3.6ms | 循环:  6.3ms | 频率:24.0Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:02 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['5.67', '12.58', '-12.72', '-2.05', '37.60', '20.06'], 夹爪: -0.023
+2026-08-05 11:45:02 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['5.8', '14.1', '-13.0', '-1.6', '36.7', '20.6'], 夹爪: 0
+2026-08-05 11:45:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['6.90', '13.37', '-11.47', '-1.48', '30.87', '21.75'], 夹爪: -0.021
+2026-08-05 11:45:04 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['7.0', '17.6', '-12.8', '-1.2', '30.4', '21.9'], 夹爪: 0
+2026-08-05 11:45:05 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:   900 | 推理:  3.6ms | 循环:  6.1ms | 频率:24.6Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:05 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['10.47', '30.75', '-18.07', '-1.97', '30.66', '25.72'], 夹爪: 0.051
+2026-08-05 11:45:05 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['10.6', '28.9', '-18.3', '-1.5', '30.2', '26.2'], 夹爪: 0
+2026-08-05 11:45:05 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02159 rad)
+2026-08-05 11:45:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['8.41', '25.22', '-15.01', '-1.68', '27.49', '24.82'], 夹爪: 0.080
+2026-08-05 11:45:07 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['8.8', '30.1', '-17.2', '-1.5', '26.8', '25.1'], 夹爪: 0
+2026-08-05 11:45:08 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1000 | 推理:  3.6ms | 循环:  5.9ms | 频率:25.0Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:09 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02012 rad)
+2026-08-05 11:45:09 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['8.75', '28.00', '-18.07', '-1.65', '29.67', '23.08'], 夹爪: 0.052
+2026-08-05 11:45:09 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['9.0', '29.7', '-19.0', '-1.3', '29.1', '23.3'], 夹爪: 0
+2026-08-05 11:45:10 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['11.59', '47.56', '-26.99', '-2.73', '29.48', '26.27'], 夹爪: 0.350
+2026-08-05 11:45:10 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['11.7', '45.1', '-25.9', '-2.7', '28.2', '26.6'], 夹爪: 0
+2026-08-05 11:45:12 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1100 | 推理:  3.6ms | 循环:  5.8ms | 频率:25.4Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:12 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['14.88', '64.72', '-44.64', '-0.77', '30.10', '24.01'], 夹爪: 0.268
+2026-08-05 11:45:12 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['14.7', '60.8', '-42.4', '-0.9', '29.6', '24.5'], 夹爪: 0
+2026-08-05 11:45:13 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.551 > 0.500
+2026-08-05 11:45:14 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['20.27', '107.40', '-67.68', '-6.88', '41.80', '19.74'], 夹爪: 1.414
+2026-08-05 11:45:14 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['20.5', '79.7', '-61.3', '-6.7', '41.4', '20.4'], 夹爪: 70000
+2026-08-05 11:45:14 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:14 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.540 > 0.500
+2026-08-05 11:45:14 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.605 > 0.500
+2026-08-05 11:45:15 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1200 | 推理:  3.6ms | 循环:  5.7ms | 频率:25.7Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:15 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['22.08', '115.69', '-70.17', '-10.85', '41.23', '19.38'], 夹爪: 0.854
+2026-08-05 11:45:15 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['22.2', '113.9', '-71.1', '-11.2', '41.9', '19.4'], 夹爪: 68972
+2026-08-05 11:45:16 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.528 > 0.500
+2026-08-05 11:45:17 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['21.46', '86.16', '-72.92', '1.37', '57.66', '27.43'], 夹爪: 0.192
+2026-08-05 11:45:17 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['21.5', '96.7', '-72.3', '0.3', '55.8', '25.2'], 夹爪: 0
+2026-08-05 11:45:19 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1300 | 推理:  3.6ms | 循环:  5.6ms | 频率:26.0Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:19 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['46.20', '103.69', '-124.35', '-3.02', '70.51', '14.94'], 夹爪: 0.120
+2026-08-05 11:45:19 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['44.8', '94.3', '-105.9', '-2.5', '70.4', '19.2'], 夹爪: 0
+2026-08-05 11:45:20 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['50.85', '115.33', '-127.93', '-6.15', '61.44', '-7.29'], 夹爪: 0.101
+2026-08-05 11:45:20 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['51.3', '114.4', '-127.9', '-6.1', '61.8', '-7.7'], 夹爪: 0
+2026-08-05 11:45:21 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.529 > 0.500
+2026-08-05 11:45:21 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:22 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Safety] [夹爪跳变] 0.518 > 0.500
+2026-08-05 11:45:22 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1400 | 推理:  3.5ms | 循环:  5.5ms | 频率:26.3Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:22 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['48.94', '112.13', '-131.96', '-1.91', '70.21', '6.86'], 夹爪: -0.003
+2026-08-05 11:45:22 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['48.9', '115.4', '-133.1', '-1.9', '70.2', '6.1'], 夹爪: 0
+2026-08-05 11:45:24 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['9.25', '72.91', '-85.95', '-3.65', '70.29', '7.88'], 夹爪: 0.000
+2026-08-05 11:45:24 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['12.3', '83.1', '-100.4', '-3.7', '70.3', '8.4'], 夹爪: 0
+2026-08-05 11:45:25 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1500 | 推理:  3.5ms | 循环:  5.4ms | 频率:26.5Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:25 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.61', '33.96', '-24.52', '4.68', '28.70', '7.62'], 夹爪: -0.001
+2026-08-05 11:45:25 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.0', '50.3', '-64.0', '4.4', '33.8', '7.1'], 夹爪: 0
+2026-08-05 11:45:27 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.38', '2.68', '-0.35', '5.23', '19.10', '10.16'], 夹爪: -0.007
+2026-08-05 11:45:27 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.4', '16.1', '-21.1', '5.5', '18.6', '10.1'], 夹爪: 0
+2026-08-05 11:45:28 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:29 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1600 | 推理:  3.5ms | 循环:  5.4ms | 频率:26.7Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.93', '-0.11', '-0.02', '-3.70', '30.17', '9.71'], 夹爪: -0.003
+2026-08-05 11:45:29 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.9', '-0.1', '-0.0', '-3.6', '30.2', '9.8'], 夹爪: 0
+2026-08-05 11:45:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.9s, 总漂移=0.02428 rad)
+2026-08-05 11:45:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.1s, 总漂移=0.03136 rad)
+2026-08-05 11:45:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['1.82', '-0.29', '0.25', '-3.86', '29.13', '9.91'], 夹爪: -0.004
+2026-08-05 11:45:30 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['1.8', '-0.3', '0.3', '-3.8', '29.1', '9.9'], 夹爪: 0
+2026-08-05 11:45:31 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 1.0s, 总漂移=0.02586 rad)
+2026-08-05 11:45:32 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1700 | 推理:  3.5ms | 循环:  5.3ms | 频率:26.9Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:32 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.32', '-0.33', '0.23', '-3.06', '27.90', '10.15'], 夹爪: -0.004
+2026-08-05 11:45:32 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.3', '0.0', '0.2', '-2.9', '27.5', '10.2'], 夹爪: 0
+2026-08-05 11:45:33 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.7s, 总漂移=0.02394 rad)
+2026-08-05 11:45:33 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02042 rad)
+2026-08-05 11:45:34 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.21', '-0.24', '0.17', '-3.18', '28.38', '10.12'], 夹爪: -0.004
+2026-08-05 11:45:34 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.0', '0.2', '-3.1', '28.1', '10.2'], 夹爪: 0
+2026-08-05 11:45:34 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.02030 rad)
+2026-08-05 11:45:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02108 rad)
+2026-08-05 11:45:35 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1800 | 推理:  3.5ms | 循环:  5.3ms | 频率:27.0Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.21', '-0.25', '0.20', '-3.15', '28.09', '10.06'], 夹爪: -0.004
+2026-08-05 11:45:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.1', '0.2', '-3.0', '27.8', '10.1'], 夹爪: 0
+2026-08-05 11:45:35 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02168 rad)
+2026-08-05 11:45:36 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.02346 rad)
+2026-08-05 11:45:37 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02065 rad)
+2026-08-05 11:45:37 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.22', '-0.27', '0.17', '-3.11', '28.10', '10.20'], 夹爪: -0.004
+2026-08-05 11:45:37 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.1', '0.2', '-3.0', '27.8', '10.3'], 夹爪: 0
+2026-08-05 11:45:37 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02333 rad)
+2026-08-05 11:45:38 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.02356 rad)
+2026-08-05 11:45:38 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02068 rad)
+2026-08-05 11:45:39 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  1900 | 推理:  3.5ms | 循环:  5.2ms | 频率:27.2Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:39 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.14', '-0.30', '0.24', '-3.04', '27.97', '10.09'], 夹爪: -0.004
+2026-08-05 11:45:39 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.1', '-0.1', '0.3', '-3.0', '27.7', '10.1'], 夹爪: 0
+2026-08-05 11:45:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.8s, 总漂移=0.02431 rad)
+2026-08-05 11:45:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.4s, 总漂移=0.02003 rad)
+2026-08-05 11:45:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.24', '-0.30', '0.18', '-3.08', '28.13', '10.09'], 夹爪: -0.004
+2026-08-05 11:45:40 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.2', '0.2', '-3.0', '27.9', '10.1'], 夹爪: 0
+2026-08-05 11:45:41 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.5s, 总漂移=0.02005 rad)
+2026-08-05 11:45:41 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:41 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02602 rad)
+2026-08-05 11:45:42 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  2000 | 推理:  3.5ms | 循环:  5.2ms | 频率:27.3Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:42 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.13', '-0.28', '0.19', '-3.02', '28.12', '10.06'], 夹爪: -0.004
+2026-08-05 11:45:42 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.1', '-0.1', '0.2', '-2.9', '27.8', '10.1'], 夹爪: 0
+2026-08-05 11:45:42 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02086 rad)
+2026-08-05 11:45:43 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.7s, 总漂移=0.03410 rad)
+2026-08-05 11:45:43 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02148 rad)
+2026-08-05 11:45:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.21', '-0.29', '0.22', '-3.03', '28.04', '10.09'], 夹爪: -0.004
+2026-08-05 11:45:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.1', '0.2', '-3.0', '27.8', '10.1'], 夹爪: 0
+2026-08-05 11:45:44 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02169 rad)
+2026-08-05 11:45:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.7s, 总漂移=0.02431 rad)
+2026-08-05 11:45:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02494 rad)
+2026-08-05 11:45:45 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  2100 | 推理:  3.5ms | 循环:  5.2ms | 频率:27.4Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.19', '-0.33', '0.26', '-3.23', '28.58', '10.07'], 夹爪: -0.004
+2026-08-05 11:45:45 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.2', '0.3', '-3.2', '28.4', '10.1'], 夹爪: 0
+2026-08-05 11:45:46 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.4s, 总漂移=0.02126 rad)
+2026-08-05 11:45:46 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.02225 rad)
+2026-08-05 11:45:47 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02002 rad)
+2026-08-05 11:45:47 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.05', '-0.34', '0.28', '-3.57', '28.90', '10.18'], 夹爪: -0.003
+2026-08-05 11:45:47 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.0', '-0.3', '0.3', '-3.5', '28.7', '10.2'], 夹爪: 0
+2026-08-05 11:45:47 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.3s, 总漂移=0.02047 rad)
+2026-08-05 11:45:48 [DEBUG  ] lerobot.robots.single_piper.single_piper: None SinglePiper read state: 0.0ms
+2026-08-05 11:45:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.02881 rad)
+2026-08-05 11:45:48 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02044 rad)
+2026-08-05 11:45:49 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Stats] 步数:  2200 | 推理:  3.5ms | 循环:  5.1ms | 频率:27.5Hz | 模型:Task_C | 切换:1 | VLM:30/30 (100%) | 共识:6 | 静止事件:5
+2026-08-05 11:45:49 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.16', '-0.36', '0.32', '-3.62', '28.60', '9.95'], 夹爪: -0.004
+2026-08-05 11:45:49 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.2', '0.3', '-3.5', '28.3', '10.0'], 夹爪: 0
+2026-08-05 11:45:49 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02206 rad)
+2026-08-05 11:45:50 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.5s, 总漂移=0.03298 rad)
+2026-08-05 11:45:50 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02368 rad)
+2026-08-05 11:45:50 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 原始动作(°): ['2.16', '-0.27', '0.25', '-3.71', '28.83', '10.06'], 夹爪: -0.004
+2026-08-05 11:45:50 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Action] 关节(°): ['2.2', '-0.2', '0.3', '-3.6', '28.5', '10.1'], 夹爪: 0
+2026-08-05 11:45:51 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02073 rad)
+2026-08-05 11:45:51 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.6s, 总漂移=0.03120 rad)
+2026-08-05 11:45:52 [DEBUG  ] lerobot.act_vlm_orchestrator_v2.stationary_detector: [Stationary] 静止期间漂移超出保持带, 静止计时重置 (曾静止 0.2s, 总漂移=0.02279 rad)
+2026-08-05 11:45:52 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+⚠️  收到信号 2, 紧急停止!
+2026-08-05 11:45:52 [WARNING] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] ⚠️ 紧急停止触发, 退出循环
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+======================================================================
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   正在关闭...
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 异步读取线程已停止
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 相机已断开
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] 清理所有模型...
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.act_model_manager: [ModelMgr] ✅ 清理完成
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Orchestrator] 决策日志已保存: ./act_vlm_logs/vlm_decisions_1785901552.json (30 条)
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: 
+[Final Stats]
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   总步数: 2296
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   平均推理时间: 3.5ms
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   平均循环时间: 5.1ms
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   实际频率: 27.6Hz (墙钟 83.3s)
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   模型切换次数: 1
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   VLM 调用: {'total_calls': 30, 'success_calls': 30, 'success_rate': 1.0, 'last_call_time': 1785901492.91161}
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   投票共识次数: 6
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   静止事件: 5
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   日志目录: ./act_vlm_logs
+2026-08-05 11:45:52 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-05 11:45:52 [INFO   ] __main__: 程序正常退出
+2026-08-05 11:45:52 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper disconnected.

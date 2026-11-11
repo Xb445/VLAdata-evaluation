@@ -1,0 +1,48 @@
+2026-08-31 14:07:02 [INFO   ] __main__: 日志文件: ./act_vlm_logs/orchestrator_20260831_140702.log
+2026-08-31 14:07:02 [INFO   ] __main__: ======================================================================
+2026-08-31 14:07:02 [INFO   ] __main__:   ACT + VLM 多任务联调编排器 v1.0
+2026-08-31 14:07:02 [INFO   ] __main__: ======================================================================
+2026-08-31 14:07:02 [INFO   ] __main__:   VLM 服务:     http://localhost:8000/v1
+2026-08-31 14:07:02 [INFO   ] __main__:   VLM 模型:     qwen3-vl-2b
+2026-08-31 14:07:02 [INFO   ] __main__:   Task_A:       /home/ub/Videos/0407/model/ACT_model/model/Task_A/pretrained_model
+2026-08-31 14:07:02 [INFO   ] __main__:   Task_B:       /home/ub/Videos/0407/model/ACT_model/model/Task_B/pretrained_model
+2026-08-31 14:07:02 [INFO   ] __main__:   Task_C:       /home/ub/Videos/0407/model/ACT_model/model/Task_C/pretrained_model
+2026-08-31 14:07:02 [INFO   ] __main__:   默认模型:     Task_A
+2026-08-31 14:07:02 [INFO   ] __main__:   推理设备:     cuda
+2026-08-31 14:07:02 [INFO   ] __main__:   投票窗口:     5 帧 / 阈值 3
+2026-08-31 14:07:02 [INFO   ] __main__:   静止检测:     2.0s @ 0.01745 rad
+2026-08-31 14:07:02 [INFO   ] __main__:   快速重评估:   1.0s (连拍未切换时加速)
+2026-08-31 14:07:02 [INFO   ] __main__:   VLM 连拍:     5 帧 × 0.1s 间隔
+2026-08-31 14:07:02 [INFO   ] __main__:   推理频率:     30.0 Hz
+2026-08-31 14:07:02 [INFO   ] __main__:   轨迹平滑:     启用
+2026-08-31 14:07:02 [INFO   ] __main__:   chunk过渡:    已禁用 (v5: 与 HIL 一致, 纯 EMA + 全关节限幅)
+2026-08-31 14:07:02 [INFO   ] __main__:   保持锁定:     3.44° / 45步 (抑制任务完成/复位后微振荡)
+2026-08-31 14:07:02 [INFO   ] __main__:   ACT时序集成:  禁用(队列模式)
+2026-08-31 14:07:02 [INFO   ] __main__:   夹爪死区:     0.15
+2026-08-31 14:07:02 [INFO   ] __main__:   夹爪放大:     1.0 (0.5=√放大, 1.0=线性)
+2026-08-31 14:07:02 [INFO   ] __main__:   夹爪强制闭合: 35000.0 (≈raw<0.500)
+2026-08-31 14:07:02 [INFO   ] __main__:   chunk限幅:    已随过渡机制移除 (逐关节限幅见 rate_limits, 现仅 J2/J3)
+2026-08-31 14:07:02 [INFO   ] __main__:   干跑模式:     否 (正常控制机械臂)
+2026-08-31 14:07:02 [INFO   ] __main__:   子任务超时:   30.0s
+2026-08-31 14:07:02 [INFO   ] __main__:   试次统计:     90s 阈值 (A→B→C 完成判为成功)
+2026-08-31 14:07:02 [INFO   ] __main__:   切换保护:     3.0s
+2026-08-31 14:07:02 [INFO   ] __main__:   日志目录:     ./act_vlm_logs
+2026-08-31 14:07:02 [INFO   ] __main__: ======================================================================
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.vlm_client: [VLM] vLLM 服务连接成功, 可用模型: ['qwen3-vl-2b']
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator:   ACT + VLM 多任务联调编排器 — 初始化
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: ======================================================================
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 连接相机: top=4, wrist=10
+2026-08-31 14:07:02 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] ✅ 相机连接成功 (640x480@30fps)
+2026-08-31 14:07:03 [INFO   ] lerobot.act_vlm_orchestrator_v2.camera_manager: [Camera] 异步读取线程已启动
+2026-08-31 14:07:06 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper connected.
+2026-08-31 14:07:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ✅ 机械臂已连接: single_piper
+2026-08-31 14:07:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能机械臂...
+2026-08-31 14:07:06 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:07 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:08 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:09 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:10 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:11 [INFO   ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] 使能状态: False
+2026-08-31 14:07:11 [ERROR  ] lerobot.act_vlm_orchestrator_v2.orchestrator: [Robot] ❌ 使能超时!
+2026-08-31 14:07:11 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper disconnected.

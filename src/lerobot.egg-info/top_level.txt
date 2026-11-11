@@ -1,0 +1,4 @@
+lerobot
+outputs
+piper_sdk
+piper_sdk_orig

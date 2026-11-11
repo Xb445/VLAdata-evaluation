@@ -1,0 +1,161 @@
+2026-08-26 13:38:48 [INFO   ] __main__: 日志文件: ./act_vlm_logs/orchestrator_20260826_133848.log
+2026-08-26 13:38:48 [INFO   ] __main__: ======================================================================
+2026-08-26 13:38:48 [INFO   ] __main__:   PI0.5 + VLM 多任务联调编排器 v1.1 (单模型多任务)
+2026-08-26 13:38:48 [INFO   ] __main__: ======================================================================
+2026-08-26 13:38:48 [INFO   ] __main__:   VLM 服务:     http://localhost:8000/v1
+2026-08-26 13:38:48 [INFO   ] __main__:   VLM 模型:     qwen3-vl-2b
+2026-08-26 13:38:48 [INFO   ] __main__:   PI 模型:      /home/ub/Videos/Evo-RL/model/Pimodel/60K/pretrained_model
+2026-08-26 13:38:48 [INFO   ] __main__:   默认任务:     Task_A
+2026-08-26 13:38:48 [INFO   ] __main__:   任务文本映射:
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_A: 'Grab the package and place it on the barcode scanning table.'
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_B: 'Flip the package if the barcode is not facing up.'
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_C: 'Grab the scanned package and place it into the box.'
+2026-08-26 13:38:48 [INFO   ] __main__:   推理设备:     cuda
+2026-08-26 13:38:48 [INFO   ] __main__:   RTC:          启用 (horizon=16, guidance=8.0, schedule=EXP)
+2026-08-26 13:38:48 [INFO   ] __main__:   推理模式:     确定性采样(零噪声)
+2026-08-26 13:38:48 [INFO   ] __main__:   队列阈值:     15
+2026-08-26 13:38:48 [INFO   ] __main__:   预设位姿:     启用 (切换后移动到任务平均初始位姿, 100步×0.02s)
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_A 预设位姿(rad): [0.114,1.133,-1.101,-0.029,0.835,0.096]
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_B 预设位姿(rad): [0.431,1.470,-1.419,-0.090,1.064,0.120]
+2026-08-26 13:38:48 [INFO   ] __main__:     Task_C 预设位姿(rad): [0.352,1.278,-1.285,-0.019,0.940,0.132]
+2026-08-26 13:38:48 [INFO   ] __main__:   待机位姿:     Task_A 的初始位姿
+2026-08-26 13:38:48 [INFO   ] __main__:   投票窗口:     5 帧 / 阈值 3
+2026-08-26 13:38:48 [INFO   ] __main__:   静止检测:     2.0s @ 0.01745 rad
+2026-08-26 13:38:48 [INFO   ] __main__:   快速重评估:   1.0s (连拍未切换时加速)
+2026-08-26 13:38:48 [INFO   ] __main__:   VLM 连拍:     5 帧 × 0.1s 间隔
+2026-08-26 13:38:48 [INFO   ] __main__:   控制频率:     20.0 Hz
+2026-08-26 13:38:48 [INFO   ] __main__:   轨迹平滑:     启用
+2026-08-26 13:38:48 [INFO   ] __main__:   保持锁定:     3.44° / 45步 (抑制任务完成/复位后微振荡)
+2026-08-26 13:38:48 [INFO   ] __main__:   夹爪死区:     0.15
+2026-08-26 13:38:48 [INFO   ] __main__:   夹爪放大:     1.0 (0.5=√放大, 1.0=线性)
+2026-08-26 13:38:48 [INFO   ] __main__:   夹爪强制闭合: 35000.0 (≈raw<0.500)
+2026-08-26 13:38:48 [INFO   ] __main__:   干跑模式:     否 (正常控制机械臂)
+2026-08-26 13:38:48 [INFO   ] __main__:   子任务超时:   30.0s
+2026-08-26 13:38:48 [INFO   ] __main__:   切换保护:     3.0s
+2026-08-26 13:38:48 [INFO   ] __main__:   日志目录:     ./act_vlm_logs
+2026-08-26 13:38:48 [INFO   ] __main__: ======================================================================
+2026-08-26 13:38:48 [INFO   ] lerobot.pi05_vlm_orchestrator.vlm_client: [VLM] vLLM 服务连接成功, 可用模型: ['qwen3-vl-2b']
+2026-08-26 13:38:50 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:38:50 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   ACT + VLM 多任务联调编排器 — 初始化
+2026-08-26 13:38:50 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:38:50 [INFO   ] lerobot.pi05_vlm_orchestrator.camera_manager: [Camera] 连接相机: top=4, wrist=10
+2026-08-26 13:38:50 [INFO   ] lerobot.pi05_vlm_orchestrator.camera_manager: [Camera] ✅ 相机连接成功 (640x480@30fps)
+2026-08-26 13:38:51 [INFO   ] lerobot.pi05_vlm_orchestrator.camera_manager: [Camera] 异步读取线程已启动
+2026-08-26 13:38:52 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper connected.
+2026-08-26 13:38:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Robot] ✅ 机械臂已连接: single_piper
+2026-08-26 13:38:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Robot] 使能机械臂...
+2026-08-26 13:38:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Robot] 使能状态: False
+2026-08-26 13:38:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Robot] 使能状态: True
+2026-08-26 13:38:56 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Robot] ✅ 机械臂使能完成
+2026-08-26 13:38:56 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Preset] 🎯 切换到 Task_A 平均初始位姿: ['6.5°', '64.9°', '-63.1°', '-1.6°', '47.9°', '5.5°']
+2026-08-26 13:38:56 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Preset] 🎯 缓慢移动到预设位姿 (100 步 × 20ms)...
+2026-08-26 13:38:58 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Preset] ✅ 已到位: [ 0.114  1.133 -1.101 -0.029  0.835  0.096] rad
+2026-08-26 13:38:58 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Preset] 🦾 夹爪开度: 1.0
+2026-08-26 13:38:58 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Init] 预加载 PI0.5 模型...
+2026-08-26 13:38:58 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 加载 PI0.5 模型: /home/ub/Videos/Evo-RL/model/Pimodel/60K/pretrained_model
+2026-08-26 13:38:58 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 🧠 PI05 config: chunk_size=50, max_state_dim=32, image_features=['observation.images.wrist', 'observation.images.top', 'observation.images.empty_camera_0'], tokenizer=/home/ub/Videos/Evo-RL/model/paligemma-3b-pt-224
+2026-08-26 13:39:23 [INFO   ] root: Enabled gradient checkpointing for PI05Pytorch model
+2026-08-26 13:39:24 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ 加载 PI 模型失败: CUDA out of memory. Tried to allocate 504.00 MiB. GPU 0 has a total capacity of 15.57 GiB of which 386.25 MiB is free. Process 12940 has 103.86 MiB memory in use. Process 44064 has 6.31 GiB memory in use. Including non-PyTorch memory, this process has 6.73 GiB memory in use. Of the allocated memory 6.47 GiB is allocated by PyTorch, and 18.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-08-26 13:39:24 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ PI 模型加载失败
+2026-08-26 13:39:24 [WARNING] lerobot.pi05_vlm_orchestrator.orchestrator: [Init] ⚠️ 模型 model 预加载失败, 将在需要时重试
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Init] TrajectorySmoother 已初始化 (HIL/S0 纯 EMA 策略: EMA=[0.3, 0.12, 0.18, 0.3, 0.3, 0.3, 0.5], rate_limits=[None, 0.015, 0.015, None, None, None, None], gripper_dead_zone=0.15, transition_duration=1.0s)
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Init] GripperFilter 已初始化 (force_close_threshold=35000.0, boost_exponent=1.0)
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Init] SafetyMonitor 已初始化
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   ✅ 初始化完成, 准备开始联调循环
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   默认模型: Task_A
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   RTC:      启用 (horizon=16, guidance=8.0)
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   确定性采样: 启用(零噪声)
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   投票窗口: 5 帧, 阈值: 3
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   静止检测: 2.0s @ 0.01745 rad
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   子任务超时: 30.0s
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   切换保护:   3.0s
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   VLM 服务: http://localhost:8000/v1
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   PI 模型: /home/ub/Videos/Evo-RL/model/Pimodel/60K/pretrained_model
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: 
+======================================================================
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   🚀 PI0.5 + VLM 联调循环开始
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   按 Ctrl+C 停止
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 执行首次场景评估 (VLM 连拍投票确认模型)...
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] 投票器已完全重置
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-26 13:39:24 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] ⏸️ 进入待机模式, 等待场景复原...
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:25 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🟢 场景复原检测: subtask1 → Task_A
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🔄 切换任务: standby → Task_A
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 加载 PI0.5 模型: /home/ub/Videos/Evo-RL/model/Pimodel/60K/pretrained_model
+2026-08-26 13:39:26 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 🧠 PI05 config: chunk_size=50, max_state_dim=32, image_features=['observation.images.wrist', 'observation.images.top', 'observation.images.empty_camera_0'], tokenizer=/home/ub/Videos/Evo-RL/model/paligemma-3b-pt-224
+2026-08-26 13:39:50 [INFO   ] root: Enabled gradient checkpointing for PI05Pytorch model
+2026-08-26 13:39:51 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ 加载 PI 模型失败: CUDA out of memory. Tried to allocate 504.00 MiB. GPU 0 has a total capacity of 15.57 GiB of which 288.25 MiB is free. Process 12940 has 103.86 MiB memory in use. Process 44064 has 6.39 GiB memory in use. Including non-PyTorch memory, this process has 6.74 GiB memory in use. Of the allocated memory 6.47 GiB is allocated by PyTorch, and 33.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-08-26 13:39:51 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ 加载 PI 模型失败, 任务切换中止
+2026-08-26 13:39:51 [ERROR  ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] ❌ 任务切换失败: → Task_A
+2026-08-26 13:39:51 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-26 13:39:51 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] ⏸️ 进入待机模式, 等待场景复原...
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.stationary_detector: [Stationary] 🔔 机械臂静止 1.0s (快速阈值=1.0s, 保持带=0.0450 rad, 总漂移=0.00000 rad), 触发场景重评估
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🔔 机械臂静止 2s, 启动 VLM 连拍投票
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] 投票器已完全重置
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 启动 VLM 连拍投票 (目标 5 帧, 间隔 0.1s, 总超时 5.0s, 运动中止=开)
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 1/5
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 2/5
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:52 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 3/5
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 4/5
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 连拍 5/5
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] ✅ 达成共识! subtask=subtask1 → model=Task_A (5/5 票, 比率=100%)
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [VLM] 场景分类: 包裹在桌面 → Task_A: 抓取到条码扫描台 (location=桌面, label_visible=True)
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.window_voter: [Voter] 共识已消费: ('subtask1', 'Task_A'), 窗口已重置
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🟢 场景复原检测: subtask1 → Task_A
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🎯 投票共识: subtask=subtask1 → model=Task_A
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 🔄 切换任务: standby → Task_A
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 加载 PI0.5 模型: /home/ub/Videos/Evo-RL/model/Pimodel/60K/pretrained_model
+2026-08-26 13:39:53 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 🧠 PI05 config: chunk_size=50, max_state_dim=32, image_features=['observation.images.wrist', 'observation.images.top', 'observation.images.empty_camera_0'], tokenizer=/home/ub/Videos/Evo-RL/model/paligemma-3b-pt-224
+2026-08-26 13:40:04 [WARNING] lerobot.pi05_vlm_orchestrator.orchestrator: 
+⚠️  收到信号 2, 紧急停止!
+2026-08-26 13:40:11 [WARNING] lerobot.pi05_vlm_orchestrator.orchestrator: 
+⚠️  收到信号 2, 紧急停止!
+2026-08-26 13:40:13 [WARNING] lerobot.pi05_vlm_orchestrator.orchestrator: 
+⚠️  收到信号 2, 紧急停止!
+2026-08-26 13:40:18 [INFO   ] root: Enabled gradient checkpointing for PI05Pytorch model
+2026-08-26 13:40:18 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ 加载 PI 模型失败: CUDA out of memory. Tried to allocate 504.00 MiB. GPU 0 has a total capacity of 15.57 GiB of which 259.19 MiB is free. Process 12940 has 103.86 MiB memory in use. Process 44064 has 6.43 GiB memory in use. Including non-PyTorch memory, this process has 6.76 GiB memory in use. Of the allocated memory 6.47 GiB is allocated by PyTorch, and 44.30 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-08-26 13:40:18 [ERROR  ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ❌ 加载 PI 模型失败, 任务切换中止
+2026-08-26 13:40:18 [ERROR  ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] ❌ 任务切换失败: → Task_A
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 📸 VLM 连拍投票结束
+2026-08-26 13:40:18 [WARNING] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] ⚠️ 紧急停止触发, 退出循环
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: 
+======================================================================
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   正在关闭...
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] 清理...
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.pi_model_manager: [ModelMgr] ✅ 清理完成
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.camera_manager: [Camera] 异步读取线程已停止
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.camera_manager: [Camera] 相机已断开
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: [Orchestrator] 决策日志已保存: ./act_vlm_logs/vlm_decisions_1787722818.json (10 条)
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: 
+[Final Stats]
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   总步数: 0
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   模型切换次数: 0
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   VLM 调用: {'total_calls': 10, 'success_calls': 10, 'success_rate': 1.0, 'last_call_time': 1787722793.3145602}
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   投票共识次数: 2
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   静止事件: 1
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator:   日志目录: ./act_vlm_logs
+2026-08-26 13:40:18 [INFO   ] lerobot.pi05_vlm_orchestrator.orchestrator: ======================================================================
+2026-08-26 13:40:18 [INFO   ] __main__: 程序正常退出
+2026-08-26 13:40:18 [INFO   ] lerobot.robots.single_piper.single_piper: None SinglePiper disconnected.

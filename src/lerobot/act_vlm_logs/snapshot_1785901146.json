@@ -1,0 +1,16 @@
+{
+  "timestamp": 1785901146,
+  "model": "Task_A",
+  "subtask": "subtask1",
+  "joint_delta_rad": 0.0019407826475799084,
+  "loop_count": 99,
+  "joints": {
+    "joint_1.pos": -0.04891798,
+    "joint_2.pos": 0.00273997,
+    "joint_3.pos": -0.00212914,
+    "joint_4.pos": -0.07623037,
+    "joint_5.pos": 0.37706806,
+    "joint_6.pos": 0.01963351,
+    "gripper.pos": 0.0
+  }
+}
